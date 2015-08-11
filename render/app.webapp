@@ -1,0 +1,7 @@
+{
+  "name": "Chocu Wiki",
+  "version" : "0.0.1",
+  "description": "A wiki for Couchdb",
+  "launch_path": "/",
+  "default_locale": "en"
+}

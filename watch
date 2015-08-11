@@ -1,0 +1,14 @@
+#!/bin/bash
+
+root=$(dirname $(readlink -f $0))
+app=$(basename $root)
+src="$root/render"
+couchdb=${couchdb:-http://${couchdb_auth:+$couchdb_auth@}localhost:5984/$app}
+
+while true; do
+    echo "pushing $src to $couchdb id $app"
+
+    erica push $src $couchdb
+
+    inotifywait -r $src -e create -e modify -e delete -e move --exclude '/[.]#|~$|#$' || break
+done
