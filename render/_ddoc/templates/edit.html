@@ -5,9 +5,12 @@
   <link rel="stylesheet" href="../../css/bootstrap.min.css"></link>
 </head>
 <body ng-controller="Edit">
+  <div></div>
+  <div choku-to-html="{markdown: markdown}">
+  </div>
   <form action="<%= save_uri %>" method="post">
-    <div id="content">
-      <textarea name="content"><%= content %></textarea>
+    <div id="markdown">
+      <textarea name="content" ng-model="markdown"><%= content %></textarea>
     </div>
     <button class="btn btn-default" type="submit">Save</button>
     <!-- need cancel -->
