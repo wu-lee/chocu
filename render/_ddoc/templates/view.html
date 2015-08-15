@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html ng-app="Chocu">
+<head>
+  <script src="../scripts/_design/render"></script>
+  <link rel="stylesheet" href="../../css/bootstrap.min.css"></link>
+</head>
+<body ng-controller="View">
+  <div id="content">
+  <%= content %>
+  </div>
+  <form action="<%= edit_uri %>">
+    <button class="btn btn-default" type="submit">Edit</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app="Chocu">
+<head>
+  <script src="../scripts/_design/render"></script>
+  <link rel="stylesheet" href="../../css/bootstrap.min.css"></link>
+</head>
+<body ng-controller="Edit">
+  <form action="<%= save_uri %>" method="post">
+    <div id="content">
+      <textarea name="content"><%= content %></textarea>
+    </div>
+    <button class="btn btn-default" type="submit">Save</button>
+    <!-- need cancel -->
+  </form>
+</body>
+</html>
