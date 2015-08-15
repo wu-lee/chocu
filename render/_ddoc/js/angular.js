@@ -1,0 +1,1 @@
+../../../3p/angular-1.2.18/angular.js
