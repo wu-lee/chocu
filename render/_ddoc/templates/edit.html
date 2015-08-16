@@ -3,17 +3,89 @@
 <head>
   <script src="../scripts/_design/render"></script>
   <link rel="stylesheet" href="../../css/bootstrap.min.css"></link>
+  <style>
+    html, body, form[name=editor] {
+      height: 100%;
+      width: 100%;
+      position: relative;
+    }
+    form[name=editor] > div.windows {
+      position: absolute;
+      width: 100%;
+      top: 5em;
+      bottom: 3.5em;
+    }
+
+    div.windows > div {
+      top: 0;
+      bottom: 0;
+      width: 50%;
+    }
+
+    #preview, #editor {
+      position: absolute;
+      padding: 0.5em;
+    }
+
+    #preview {
+      right: 0;
+    }
+
+    #editor {
+      left: 0;
+      font-family: monospace;
+      font-size: medium;
+    }
+
+    #editor textarea {
+      width: 100%;
+      height: 100%;
+      border: 1px solid;
+      padding: 0;
+    }
+    
+    #preview > div {
+      width: 100%;
+      height: 100%;
+      border: 1px solid;
+      padding: 0;
+      overflow: auto;
+    }
+
+
+    form[name=editor] > div.buttons {
+      position: absolute;
+      width: 100%;
+      height: 3.5em;
+      bottom: 0;
+    }
+    
+    h1.page {
+      position: absolute;
+      margin-left: 0.5em;
+    }
+  </style>
 </head>
 <body ng-controller="Edit">
-  <div></div>
-  <div choku-to-html="{markdown: markdown}">
-  </div>
-  <form action="<%= save_uri %>" method="post">
-    <div id="markdown">
-      <textarea name="content" ng-model="markdown"><%= content %></textarea>
+  <h1 class="page">Title</h1>
+  <form action="<%= save_uri %>" method="post" name="editor">
+
+    <div class="windows">
+
+      <div id="editor">
+	<textarea name="content" choku-content="markdown"><%= content %></textarea>
+      </div>
+
+      <div id="preview">
+	<div choku-to-html="{markdown: markdown}"></div>
+      </div>
     </div>
-    <button class="btn btn-default" type="submit">Save</button>
-    <!-- need cancel -->
+
+    <div class="buttons">
+      <button class="btn btn-default" type="submit">Save</button>
+      <button class="btn btn-default" type="submit">Cancel</button>
+    </div>
+
   </form>
 </body>
 </html>

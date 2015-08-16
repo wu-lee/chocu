@@ -35,4 +35,29 @@ angular.module('Chocu')
                 }, true);
             },
         };
+    })
+    .directive('chokuContent', function($window) {
+        return {
+            scope: false,
+            restrict: 'A',
+            link: function(scope, element, attrs) {
+                // Get the expression to watch from the choku-to-html attr
+                var varname = attrs.chokuContent; // FIXME trim space
+                
+                element.val(scope[varname] = element.text());
+/*                
+                scope.$watch(varname, function(newval, oldval) {
+                    // Acts like ng-model, except it initialises
+                    // the value from the HTML content
+                    console.log(">>"+varname);
+                    element.val(newval);
+                });
+*/
+                element.on('input', function() {
+                    scope.$apply(function() { 
+                    scope[varname] = element.val();
+                    });
+                });
+            },
+        };
     });
